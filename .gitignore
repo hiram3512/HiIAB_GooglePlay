@@ -1,2 +1,8 @@
 unity/Library/
 unity/Temp/
+unity/UnityVS.unity.CSharp.csproj
+unity/UnityVS.unity.sln
+unity/Assets/UnityVS.meta
+unity/.vs/UnityVS.unity/v14/.suo
+unity/Assets/UnityVS/
+unity/obj/
