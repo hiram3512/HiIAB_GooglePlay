@@ -6,6 +6,8 @@ public class HiIAPManager
     private static AndroidJavaObject plugin;
     static HiIAPManager()
     {
+        if (Application.platform != RuntimePlatform.Android)
+            return;
         using (AndroidJavaClass pluginClass = new AndroidJavaClass("com.hiram.hiiap"))
         {
             plugin = pluginClass.GetStatic<AndroidJavaObject>("currentActivity");
@@ -13,10 +15,14 @@ public class HiIAPManager
     }
     public static void Init(string key)
     {
+        if (Application.platform != RuntimePlatform.Android)
+            return;
         plugin.Call("Init", key);
     }
     public static void Purchase(string id)
     {
+        if (Application.platform != RuntimePlatform.Android)
+            return;
         plugin.Call("Purchase", id);
     }
 

@@ -3,18 +3,17 @@ using System.Collections;
 using UnityEngine.UI;
 using System;
 
-public class Example : MonoBehaviour,IIAPListener
+public class Example : MonoBehaviour, IIAPListener
 {
     /// <summary>
     /// this key is provided by googleplay
     /// </summary>
-    public string key;
+    private string key = "128732k";
 
     /// <summary>
     /// purchase id, you will setting in googleplay console
     /// </summary>
-    public string[] id;
-
+    private string[] id = new string[] { "com.hiram.id1", "com.hiram.id2" };
 
     public void OnGUI()
     {
@@ -22,23 +21,39 @@ public class Example : MonoBehaviour,IIAPListener
         {
             HiIAPManager.Init(key);
         }
-        if (GUI.Button(new Rect(0, 50, 100, 40), "test1"))
+        if (GUI.Button(new Rect(0, 50, 100, 40), "purchase1"))
         {
             HiIAPManager.Purchase(id[0]);
+            //recommend open a panel to forbid player multiply click,
+            //and wait the purchase result.
+            //forbidPanel.setActive(true);
+
         }
-        if (GUI.Button(new Rect(0, 100, 100, 40), "test2"))
+        if (GUI.Button(new Rect(0, 100, 100, 40), "purchase2"))
         {
             HiIAPManager.Purchase(id[1]);
+            //recommend open a panel to forbid player multiply click,
+            //and wait the purchase result.
+            //forbidPanel.setActive(true);
         }
     }
-
     public void PurchaseSucceeded(string id)
     {
-        
+        //forbidPanel.setActive(false);
+        if (id == this.id[0])
+        {
+            //buy virtual gold1 success, and add virtual gold 100;
+            // gold+=100;  
+        }
+        else if (id == this.id[1])
+        {
+            //buy virtual gold1 success, and add virtual gold 200;
+            // gold+=200; 
+        }
     }
-
     public void PurchaseFailed(string id)
     {
-      
+        //purchase failed
+        //forbidPanel.setActive(false);
     }
 }
