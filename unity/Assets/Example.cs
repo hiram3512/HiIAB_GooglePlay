@@ -56,4 +56,15 @@ public class Example : MonoBehaviour, IIAPListener
         //purchase failed
         //forbidPanel.setActive(false);
     }
+
+    public void OnEnable()
+    {
+        HiIAPListener.purchaseSuccessEvent += PurchaseSucceeded;
+        HiIAPListener.purchaseFailedEvent += PurchaseFailed;
+    }
+    public void OnDisable()
+    {
+        HiIAPListener.purchaseSuccessEvent -= PurchaseSucceeded;
+        HiIAPListener.purchaseFailedEvent -= PurchaseFailed;
+    }
 }

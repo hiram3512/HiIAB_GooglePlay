@@ -4,6 +4,8 @@ using System;
 
 public class HiIAPListener : MonoBehaviour, IIAPListener
 {
+    public static event Action<string> purchaseSuccessEvent;
+    public static event Action<string> purchaseFailedEvent;
     // Use this for initialization
     void Start()
     {
@@ -16,7 +18,7 @@ public class HiIAPListener : MonoBehaviour, IIAPListener
     /// <param name="id"></param>
     public void PurchaseFailed(string id)
     {
-        GameObject.FindObjectOfType<Example>().PurchaseFailed(id);
+        purchaseFailedEvent(id);
     }
     /// <summary>
     /// called from android to notice unity purchase success
@@ -24,7 +26,7 @@ public class HiIAPListener : MonoBehaviour, IIAPListener
     /// <param name="id"></param>
     public void PurchaseSucceeded(string id)
     {
-        GameObject.FindObjectOfType<Example>().PurchaseSucceeded(id);
+        purchaseSuccessEvent(id);
     }
 }
 public interface IIAPListener
