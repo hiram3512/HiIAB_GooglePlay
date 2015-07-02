@@ -8,7 +8,7 @@ public class HiIAPManager
     {
         if (Application.platform != RuntimePlatform.Android)
             return;
-        using (AndroidJavaClass pluginClass = new AndroidJavaClass("com.hiram.hiiap"))
+        using (AndroidJavaClass pluginClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
         {
             plugin = pluginClass.GetStatic<AndroidJavaObject>("currentActivity");
         }
@@ -29,5 +29,9 @@ public class HiIAPManager
     public static void TestPurchase()
     {
         Purchase("android.test.purchased");
+    }
+    public static void OnTest()
+    {
+        plugin.Call("OnTest");
     }
 }

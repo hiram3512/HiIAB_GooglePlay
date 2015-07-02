@@ -36,6 +36,10 @@ public class Example : MonoBehaviour, IIAPListener
             //and wait the purchase result.
             //forbidPanel.setActive(true);
         }
+        if (GUI.Button(new Rect(0, 200, 100, 40), "ontest"))
+        {
+            HiIAPManager.OnTest();
+        }
     }
     public void PurchaseSucceeded(string id)
     {

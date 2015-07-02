@@ -4,11 +4,21 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
 import com.unity3d.player.UnityPlayerActivity;
 
 public class UnityAgent extends UnityPlayerActivity {
+    private static UnityAgent instance;
 
+    public static UnityAgent Instance() {
+        if (instance == null)
+            instance = new UnityAgent();
+        return instance;
+    }
 
+    public void OnTest() {
+        System.out.println("OnTest");
+    }
 
 
 
