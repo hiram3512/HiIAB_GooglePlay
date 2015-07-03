@@ -38,6 +38,7 @@ public class Example : MonoBehaviour, IIAPListener
         }
         if (GUI.Button(new Rect(0, 200, 100, 40), "ontest"))
         {
+            Debug.Log("do----------from unity");
             HiIAPManager.OnTest();
         }
     }

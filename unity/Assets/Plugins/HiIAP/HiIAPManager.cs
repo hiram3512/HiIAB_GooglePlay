@@ -11,6 +11,7 @@ public class HiIAPManager
         using (AndroidJavaClass pluginClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
         {
             plugin = pluginClass.GetStatic<AndroidJavaObject>("currentActivity");
+            Debug.Log("plugin-----------" + plugin);
         }
     }
     public static void Init(string key)
